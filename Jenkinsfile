@@ -70,7 +70,7 @@ pipeline {
         stage('build and Tag docker image') {
             steps {
                 script {
-                        sh "docker build -t youngminds73/ekart:latest -f docker/Dockerfile ."
+                        sh "docker build -t ajaysurwase/ekart:latest -f docker/Dockerfile ."
                     }
             }
         }
@@ -79,8 +79,8 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u ajaysurwase7875@gmail.com -p ${dockerhubpwd}'}
-                   sh 'docker push yajaysurwase7875@gmail.com/ekart:latest'
+                   sh 'docker login -u ajaysurwase -p ${dockerhubpwd}'}
+                   sh 'docker push ajaysurwase/ekart:latest'
                 }
             }
         }
