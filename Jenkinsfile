@@ -32,11 +32,15 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonar') {
-                    def scannerHome = tool name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                    sh "${env.SCANNER_HOME}/bin/sonar-scanner \
+                    script{
+                        def scannerHome = tool(name: 'sonar-scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation')
+                        sh """
+                        ${scannerHome}/bin/sonar-scanner \
                         -Dsonar.projectKey=EKART \
                         -Dsonar.projectName=EKART \
-                        -Dsonar.java.binaries=target/classes"
+                        -Dsonar.java.binaries=target/classes
+                        """
+                    }
                 }
             }
         }
