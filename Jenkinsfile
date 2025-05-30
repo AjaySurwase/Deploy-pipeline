@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('git checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/AjaySurwase/Deploy-pipeline.git'
+                git branch: 'main', url: 'https://github.com/AjaySurwase/Deploy-pipeline.git'
             }
         }
 
